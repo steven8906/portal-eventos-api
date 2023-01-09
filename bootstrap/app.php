@@ -83,6 +83,7 @@ $app->configure('cors');
 
 $app->middleware([
     Fruitcake\Cors\HandleCors::class,
+    'Nord\Lumen\Cors\CorsMiddleware',
 ]);
 
 /*
@@ -100,7 +101,7 @@ $app->middleware([
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Fruitcake\Cors\CorsServiceProvider::class);
-
+$app->register('Nord\Lumen\Cors\CorsServiceProvider');
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
@@ -111,7 +112,6 @@ $app->register(Fruitcake\Cors\CorsServiceProvider::class);
 | can respond to, as well as the controllers that may handle them.
 |
 */
-
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
